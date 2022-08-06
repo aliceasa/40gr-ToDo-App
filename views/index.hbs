@@ -1,0 +1,41 @@
+{{#with model}}
+  <div id="title-container">
+    <h1>
+      {{title}}
+    </h1>
+  </div>
+  <hr />
+  <main>
+    <form id="note-input" method="post">
+      <input type="text" name="note" placeholder="Enter a new note here!" />
+      <button type="submit">Save</button>
+    </form>
+    <section>
+      {{#each notes}}
+        <div class="note">
+          <span class="note-text">{{this.note}}</span>
+          <div class="buttons">
+            <button onclick="editNote({{this.noteId}}, this)" class="standard">
+              <i class="fa-solid fa-pen"></i>
+            </button>
+            <button onclick="deleteNote({{this.noteId}})" class="standard">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <button
+              onclick="saveEdit({{this.noteId}}, this)"
+              class="edit hidden"
+            >
+              <i class="fa-solid fa-floppy-disk"></i>
+            </button>
+            <button
+              onclick="undoEdit({{this.noteId}}, this)"
+              class="edit hidden"
+            >
+              <i class="fa-solid fa-rotate-left"></i>
+            </button>
+          </div>
+        </div>
+      {{/each}}
+    </section>
+  </main>
+{{/with}}

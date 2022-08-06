@@ -1,0 +1,15 @@
+{{#with model}}
+  <div id="title-container">
+    <h1>
+      {{title}}
+    </h1>
+  </div>
+  <hr />
+  <main>
+    <form onsubmit="registerUser()" id="register-post" method="post">
+      <input type="text" name="username" placeholder="Enter New Username" />
+      <input type="password" name="password" placeholder="Enter New Password" />
+      <button type="submit">Register</button>
+    </form>
+  </main>
+{{/with}}
