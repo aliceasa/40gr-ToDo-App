@@ -1,25 +1,5 @@
 const savedText = {};
 
-function registerUser() {
-  const form = document.getElementById("register-post");
-  const username = form.children[0].value;
-  const password = form.children[1].value;
-
-  fetch("/register", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username: username, password: password }),
-  })
-    .then((response) => response.json())
-    .then((responseData) => {
-      console.log(responseData);
-    })
-    .catch((error) => console.warn(error));
-}
-
 function deleteNote(id) {
   fetch(`/?id=${id}`, { method: "DELETE" }).then(
     (res) => (window.location = res.url)

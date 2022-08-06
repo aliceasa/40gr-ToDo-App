@@ -130,23 +130,3 @@ h1 {
 .hidden {
   display: none !important;
 }
-
-#register-post {
-  width: 300px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-#register-post > input,
-#register-post > button {
-  padding: 12px;
-  margin-bottom: 5px;
-  border: 0;
-  border-radius: 10px;
-}
-
-#register-post > button {
-  background-color: #5d5;
-  cursor: pointer;
-}
