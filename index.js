@@ -1,6 +1,8 @@
 import express from "express";
 import handlebars from "express-handlebars";
 
+import { renderRegisterPage, registerUser } from "./lib/registerPage.js";
+
 import {
   renderMainPage,
   insertNewNote,
@@ -27,7 +29,9 @@ app.engine(
 );
 
 app.get("/", renderMainPage);
+app.get("/register", renderRegisterPage);
 app.post("/", insertNewNote);
+app.post("/register", registerUser);
 app.delete("/", deleteNote);
 app.patch("/", editNote);
 

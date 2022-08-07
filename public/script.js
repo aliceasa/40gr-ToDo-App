@@ -83,3 +83,33 @@ function enableButtonGroup(container, groupClass) {
     .querySelectorAll(`.${groupClass}`)
     .forEach((button) => button.classList.remove("hidden")); //unhide only required buttons
 }
+
+// Register
+
+if (window.location.pathname.includes("/register")) {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = e.target.children[0].value;
+    const password = e.target.children[1].value;
+
+    async function postData(url = "", data = {}) {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(data),
+      });
+      return response.json();
+    }
+
+    postData("/register", { username: username, password: password }).then(
+      (data) => {
+        console.log(data);
+        alert(data.msg);
+      }
+    );
+  });
+}
