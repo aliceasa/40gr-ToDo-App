@@ -107,8 +107,36 @@ if (window.location.pathname.includes("/register")) {
 
     postData("/register", { username: username, password: password }).then(
       (data) => {
-        console.log(data);
         alert(data.msg);
+        window.location.replace("/");
+      }
+    );
+  });
+}
+
+if (window.location.pathname.includes("/login")) {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = e.target.children[0].value;
+    const password = e.target.children[1].value;
+
+    async function postData(url = "", data = {}) {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(data),
+      });
+      return response.json();
+    }
+
+    postData("/login", { username: username, password: password }).then(
+      (data) => {
+        alert(data.msg);
+        window.location.replace("/");
       }
     );
   });

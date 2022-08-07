@@ -9,6 +9,7 @@ import {
   deleteNote,
   editNote,
 } from "./lib/mainPage.js";
+import { renderLoginPage, loginUser } from "./lib/loginPage.js";
 
 const app = express();
 const port = 8081;
@@ -30,8 +31,10 @@ app.engine(
 
 app.get("/", renderMainPage);
 app.get("/register", renderRegisterPage);
+app.get("/login", renderLoginPage);
 app.post("/", insertNewNote);
 app.post("/register", registerUser);
+app.post("/login", loginUser);
 app.delete("/", deleteNote);
 app.patch("/", editNote);
 
