@@ -108,11 +108,13 @@ if (window.location.pathname.includes("/register")) {
     postData("/register", { username: username, password: password }).then(
       (data) => {
         alert(data.msg);
-        window.location.replace("/");
+        window.location.replace("/login");
       }
     );
   });
 }
+
+// Login
 
 if (window.location.pathname.includes("/login")) {
   const form = document.querySelector("form");
